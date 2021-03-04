@@ -28,3 +28,10 @@ class Config:
         val = (nama, username, password, role, departement)
         cursor.execute("INSERT INTO user (nama, username, password, role, departement) VALUES (%s, %s, %s, %s, %s)", val)
         self.__db.commit()
+
+    def read(self):
+        cursor = self.__db.cursor()
+        sql = "SELECT nama, username FROM user"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        return result
